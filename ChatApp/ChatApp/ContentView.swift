@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Home()
+        LoginView()
     }
 }
 
@@ -49,8 +49,8 @@ struct Chats: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            TopView(expand: self.$expand).zIndex(25)
-            CenterView(expand: self.$expand).offset(y:-25)
+            TopView(expand: self.$expand).zIndex(15)
+            CenterView(expand: self.$expand).offset(y:-15)
         }
     }
     
@@ -92,7 +92,7 @@ struct TopView: View {
     @Binding var expand: Bool
     
     var body: some View {
-        VStack(spacing: 18) {
+        VStack(spacing: 20) {
             
             if self.expand{
                 HStack {
@@ -112,15 +112,15 @@ struct TopView: View {
                 }
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 18) {
+                    HStack(spacing: 10) {
                         Button {
                             //
                         } label: {
                             Image(systemName: "plus")
                                 .resizable()
-                                .frame(width: 25, height: 25)
+                                .frame(width: 18, height: 15)
                                 .foregroundColor(.primary)
-                                .padding(25)
+                                .padding(20)
                         }
                         .background(.teal.opacity(0.6))
                         .clipShape(Circle())
@@ -155,7 +155,7 @@ struct TopView: View {
             
         }
         .padding()
-        .padding(.top)
+        .padding(.top, 20)
         .background(Color.init(uiColor: .secondarySystemBackground))
         .clipShape(shape())
         .animation(.default, value: 1) // ? value
@@ -167,7 +167,7 @@ struct TopView: View {
 
 struct CenterView: View {
     
-    @Binding var expand : Bool
+    @Binding var expand: Bool
     
     var body: some View {
         List(data) { index in
@@ -184,7 +184,7 @@ struct CenterView: View {
             }
             
         }
-        .padding(.top, 20)
+        //.padding(.top, 3)
         .background(.white)
         .clipShape(shape())
     }
@@ -213,7 +213,7 @@ struct BottomView: View {
             } label: {
                 Image(systemName: "person.2.fill")
                     .resizable()
-                    .frame(width: 25, height: 25)
+                    .frame(width: 30, height: 25)
                     .foregroundColor(self.index == 1 ? Color.white : Color.white.opacity(0.5))
                     .padding(.horizontal)
             }
@@ -276,13 +276,6 @@ struct shape: Shape {
     }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
 struct Msg: Identifiable {
     var id: Int
     var name: String
@@ -292,15 +285,20 @@ struct Msg: Identifiable {
 }
 
 var data = [
-
     Msg(id: 0, name: "Emily", msg: "Hello, my sweety!", date: "11/07/2022", img: "p1"),
-    Msg(id: 1, name: "John", msg: "Hello, how are you!", date: "11/07/2022", img: "p2"),
-    Msg(id: 2, name: "Marry", msg: "Hello!", date: "11/07/2022", img: "p3"),
-    Msg(id: 3, name: "Nastia", msg: "I love you!", date: "11/07/2022", img: "p4"),
-    Msg(id: 4, name: "Steve", msg: "What's up!", date: "11/07/2022", img: "p5"),
-    Msg(id: 5, name: "Sherlock", msg: "I'm home", date: "11/07/2022", img: "p6"),
-    Msg(id: 6, name: "Catherine", msg: "Put on your cap", date: "11/07/2022", img: "p7"),
-    Msg(id: 7, name: "Mike", msg: "Don't forget to call me", date: "11/07/2022", img: "p8"),
-    Msg(id: 8, name: "Bob", msg: "I'm late!", date: "11/07/2022", img: "p9"),
-    Msg(id: 9, name: "Scotty", msg: "How is your cat?", date: "11/07/2022", img: "p10")
+    Msg(id: 1, name: "John", msg: "Hello, how are you!", date: "10/30/2022", img: "p2"),
+    Msg(id: 2, name: "Marry", msg: "Hello!", date: "07/07/2022", img: "p3"),
+    Msg(id: 3, name: "Nastia", msg: "I love you!", date: "08/27/2022", img: "p4"),
+    Msg(id: 4, name: "Steve", msg: "What's up!", date: "07/04/2022", img: "p5"),
+    Msg(id: 5, name: "Sherlock", msg: "I'm home", date: "07/16/2022", img: "p6"),
+    Msg(id: 6, name: "Catherine", msg: "Put on your cap", date: "06/14/2022", img: "p7"),
+    Msg(id: 7, name: "Mike", msg: "Don't forget to call me", date: "05/17/2022", img: "p8"),
+    Msg(id: 8, name: "Bob", msg: "I'm late!", date: "04/12/2022", img: "p9"),
+    Msg(id: 9, name: "Scotty", msg: "How is your cat?", date: "02/22/2022", img: "p10")
 ]
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
