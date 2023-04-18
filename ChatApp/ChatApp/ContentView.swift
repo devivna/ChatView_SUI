@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        LoginView()
+        Home()
     }
 }
 
@@ -23,7 +23,7 @@ struct Home: View {
         ZStack {
             VStack {
                 Color.white
-                Color("Menu")
+                Color("Main")
             }
             
             VStack(spacing: 0) {
